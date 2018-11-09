@@ -1,33 +1,36 @@
 TARGET = ahalya
 
-CC = gcc
-LD = gcc
+CC        =     gcc
+LD        =     gcc
 
-INCLUDES = include
-LIBS     = lib
-SOURCE   = src
+INCLUDES  =     include
+OBJ       =     .obj
+SRC       =     src
+
+HEADERS   =     $(INCLUDES)/*.h
+SOURCE    =     $(SRC)/*.c
+OBJECT    =     $(OBJ)/execute.o \
+				$(OBJ)/instructions.o \
+				$(OBJ)/main.o \
+				$(OBJ)/memory.o \
+				$(OBJ)/print_bin.o
+
+CFLAGS    =     -c -I$(INCLUDES)$
+
+CP        =     cp
+RM        =     rm
+RMFLAGS   =     -f
+MKDIR     =     mkdir
+DIREXISTS =     test -d
+
+HOMEBIN   =     ~/bin
 
 
-HEADERS = $(INCLUDES)/*.h
-OBJ     = $(LIBS)/*.o
 
-CFLAGS = -c -I$(INCLUDES)
-
-CP        = cp
-RM        = rm
-RMFLAGS   = -f
-MKDIR     = mkdir
-DIREXISTS = test -d
-
-HOMEBIN   = ~/bin
-
-
-
-
-$(TARGET): $(OBJ)
+$(TARGET): $(OBJECT)
 	$(LD) $^ -o $@
 
-$(LIBS)/%.o: $(SOURCE)/%.c $(HEADERS)
+$(OBJ)/%.o: $(SRC)/%.c $(HEADERS)
 	$(CC) $(CFLAGS) -o $@ $< 
 
 install: $(TARGET)
