@@ -1,4 +1,4 @@
-TARGET = vm
+TARGET = ahalya
 
 CC = gcc
 LD = gcc
@@ -20,6 +20,9 @@ MKDIR     = mkdir
 DIREXISTS = test -d
 
 HOMEBIN   = ~/bin
+
+
+
 
 $(TARGET): $(OBJ)
 	$(LD) $^ -o $@
