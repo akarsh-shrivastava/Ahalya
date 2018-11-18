@@ -10,10 +10,10 @@ SRC       =     src
 HEADERS   =     $(INCLUDES)/*.h
 SOURCE    =     $(SRC)/*.c
 OBJECT    =     $(OBJ)/execute.o \
-				$(OBJ)/instructions.o \
-				$(OBJ)/main.o \
-				$(OBJ)/memory.o \
-				$(OBJ)/funct.o
+                $(OBJ)/instructions.o \
+                $(OBJ)/main.o \
+                $(OBJ)/memory.o \
+                $(OBJ)/funct.o
 
 CFLAGS    =     -c -I$(INCLUDES)$
 
