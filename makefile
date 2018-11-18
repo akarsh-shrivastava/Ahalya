@@ -13,7 +13,7 @@ OBJECT    =     $(OBJ)/execute.o \
 				$(OBJ)/instructions.o \
 				$(OBJ)/main.o \
 				$(OBJ)/memory.o \
-				$(OBJ)/print_bin.o
+				$(OBJ)/funct.o
 
 CFLAGS    =     -c -I$(INCLUDES)$
 

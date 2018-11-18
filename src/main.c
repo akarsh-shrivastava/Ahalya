@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "memory.h"
 #include "byte.h"
-#include "print_bin.h"
+#include "funct.h"
 #include "instructions.h"
 #include "execute.h"
 
@@ -41,7 +41,7 @@ void main(int n,char** args)
 		printf("%p  %d  %d\n",IP , *(IP), ch );
 		IP=CS;
 		printf("%p\nexecuting\n",IP);
-		byte status=execute();
+		byte status=debug("--debug-e");
 		if(status==1)
 			printf("File format not supported\n");
 		fclose(f);
