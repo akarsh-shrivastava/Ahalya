@@ -1,0 +1,119 @@
+{
+    mov
+    keyword
+}
+
+
+{
+    [
+    ds_addr_open
+}
+
+
+{
+    123
+    constant
+}
+
+
+{
+    ]
+    ds_addr_close
+}
+
+
+{
+    ,
+    seperator
+}
+
+
+{
+    1223
+    constant
+}
+
+
+{
+    
+
+    delimitor
+}
+
+
+{
+    add
+    keyword
+}
+
+
+{
+    [
+    ds_addr_open
+}
+
+
+{
+    123
+    constant
+}
+
+
+{
+    ]
+    ds_addr_close
+}
+
+
+{
+    ,
+    seperator
+}
+
+
+{
+    34
+    constant
+}
+
+
+{
+    
+
+    delimitor
+}
+
+
+{
+    afad
+    possible_identifier
+}
+
+
+{
+    
+
+    delimitor
+}
+
+
+{
+    fe
+    possible_identifier
+}
+
+
+{
+    
+
+    delimitor
+}
+
+
+{
+    
+
+    delimitor
+}
+
+

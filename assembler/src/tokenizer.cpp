@@ -56,10 +56,15 @@ std::vector<std::string> Tokenizer::tokenize(std::string code)
 
         if (flags.str_open||flags.char_open)
             tok.push_back(ch);
-        else if (isspace(ch))
+        else if (isspace(ch) && ch!='\n')
             end_word();
-        else if (ch==';'||ch=='('||ch==')'||ch=='{'||ch=='}'||ch=='['||ch==']'||ch=='%'||ch=='*'||ch=='?'\
-                ||ch=='@'||ch=='!'||ch=='~'||ch=='`'||ch=='#'||ch=='$'||ch=='^'||ch==','||ch=='.')
+        else if (ch=='\n')
+        {
+            end_word();
+            tok.push_back(ch);
+            end_word();
+        }
+        else if (ch=='('||ch==')'||ch=='{'||ch=='}'||ch=='['||ch==']'||ch==',')
         {
             end_word();
             tok.push_back(ch);

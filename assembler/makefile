@@ -1,33 +1,37 @@
-TARGET = mas
+TARGET = ahalasm
 
-#CC = gcc
-#LD = gcc
+CX        =     g++
+LD        =     g++
 
-CX  = g++
+INCLUDES  =     include
+OBJ       =     .obj
+SRC       =     src
 
-#INCLUDES = include
-#LIBS     = lib
-#SOURCE   = src
+HEADERS   =     $(INCLUDES)/*.h
+SOURCE    =     $(SRC)/*.cpp
+OBJECT    =     $(OBJ)/tokenizer.o \
+                $(OBJ)/analyzer.o \
+                $(OBJ)/preprocessor.o \
+                $(OBJ)/structs.o \
+                $(OBJ)/main.o
+
+CXFLAGS   =     -c -I$(INCLUDES) -fPIC
+
+CP        =     cp
+RM        =     rm
+RMFLAGS   =     -f
+MKDIR     =     mkdir
+DIREXISTS =     test -d
+
+HOMEBIN   =     ~/bin
 
 
-#HEADERS = $(INCLUDES)/*.h
-#OBJ     = $(LIBS)/*.o
 
-#CFLAGS = -c -I$(INCLUDES)
+$(TARGET): $(OBJECT)
+	$(LD) $^ -o $@
 
-CP        = cp
-RM        = rm
-RMFLAGS   = -f
-MKDIR     = mkdir
-DIREXISTS = test -d
-
-HOMEBIN   = ~/bin
-
-
-
-
-$(TARGET): *.cpp
-	$(CX) $^ -o $@ 
+$(OBJ)/%.o: $(SRC)/%.cpp $(HEADERS)
+	$(CX) $(CXFLAGS) -o $@ $< 
 
 install: $(TARGET)
 	@$(DIREXISTS) $(HOMEBIN) || $(MKDIR) $(HOMEBIN)
