@@ -23,7 +23,7 @@ RMFLAGS   =     -f
 MKDIR     =     mkdir
 DIREXISTS =     test -d
 
-HOMEBIN   =     ~/bin
+HOMEBIN   =     ~/.local/bin
 
 
 
