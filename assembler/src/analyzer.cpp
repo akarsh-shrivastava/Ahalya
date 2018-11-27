@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <stack>
 #include <iterator>
 #include <cctype>
 #include <algorithm>
@@ -20,12 +21,16 @@ Analyzer::Analyzer ()
     ds_addr_open   = "[";
     ds_addr_close  = "]";
 
-    keywords  = {
-                    "mov",
-                    "add","sub","mul","div","mod",
-                    "and","or","not","xor","neg",
-                    "cmp","jmp","def"
-                };
+    instructions  = {
+                        "mov",
+                        "add","sub","mul","div","mod",
+                        "and","or","not","xor","neg",
+                        "cmp","jmp","def"
+                    };
+
+    segments      = {
+                        ".code",".data",".extra"
+                    };
 }
 
 
@@ -83,6 +88,11 @@ std::string Analyzer::get_type(std::vector<std::string>::iterator itr)
     if ( (std::find(keywords.begin(), keywords.end(), *itr)) != keywords.end())
     {
         return "keyword";
+    }
+
+    else if ((*itr) == ".code" || (*itr) == ".data" || (*itr) == ".extra")
+    {
+        return *itr;
     }
 
     else if ((*itr) == delimitor )
@@ -149,9 +159,13 @@ std::string Analyzer::get_type(std::vector<std::string>::iterator itr)
 
 void Analyzer::print_token_data()
 {
-
     for (std::vector<Token_struct>::iterator i = token_data.begin(); i != token_data.end(); ++i)
     {
         (*i).print();
     }
+}
+
+std::vector<Token_struct> Analyzer::get_token_data()
+{
+    return token_data;
 }

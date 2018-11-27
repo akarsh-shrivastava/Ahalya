@@ -39,8 +39,8 @@ byte debug(char* options)
             case 14:and_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
             case 15:or_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
             case 16:or_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 17:not_m( (DS+*(IP+1)) );               IP+=2; break;
-            case 18:neg_m( (DS+*(IP+1)) );               IP+=2; break;
+            case 17:not_m( (DS+*(IP+1)) );               IP+=3; break;
+            case 18:neg_m( (DS+*(IP+1)) );               IP+=3; break;
             case 19:xor_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
             case 20:xor_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
             

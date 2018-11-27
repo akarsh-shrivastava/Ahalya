@@ -8,7 +8,8 @@
 
     struct Analyzer
     {
-        std::vector<std::string> keywords;
+        std::vector<std::string> instructions;
+        std::vector<std::string> segments;
 
         std::string cs_addr_open ;
         std::string cs_addr_close;
@@ -28,6 +29,7 @@
         bool is_string(std::string tok);
         bool is_const(std::string tok);
         std::string get_type(std::vector<std::string>::iterator itr);
+        std::vector<Token_struct> Analyzer::get_token_data()
 
         void print_token_data();
     };
