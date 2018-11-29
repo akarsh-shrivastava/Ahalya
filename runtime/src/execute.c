@@ -21,33 +21,32 @@ byte debug(char* options)
         printf("IP-%p:%d\n",IP,*IP);
         switch(*IP)
         {
-            case 1:mov_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 2:mov_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
+            case 1 :mov_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 2 :mov_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
             
-            case 3:add_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 4:add_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 5:sub_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 6:sub_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 7:mul_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 8:mul_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 9:div_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 10:div_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
-            case 11:mod_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
-            case 12:mod_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
+            case 3 :add_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 4 :add_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 5 :sub_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 6 :sub_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 7 :mul_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 8 :mul_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 9 :div_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 10:div_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 11:mod_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 12:mod_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
             
-            case 13:and_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
-            case 14:and_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
-            case 15:or_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 16:or_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 17:not_m( (DS+*(IP+1)) );               IP+=3; break;
-            case 18:neg_m( (DS+*(IP+1)) );               IP+=3; break;
-            case 19:xor_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
-            case 20:xor_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
+            case 13:and_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 14:and_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 15:or_m  ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 16:or_l  ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 17:not_m ( (DS+*(IP+1)) );               IP+=3; break;
+            case 18:neg_m ( (DS+*(IP+1)) );               IP+=3; break;
+            case 19:xor_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 20:xor_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
             
-            case 21:cmp_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
-            case 22:cmp_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
-            case 23:jmp(*(IP+1), (*(IP+2)) );                   break;
-            case 24:def(*(IP+1), *(IP+2) );              IP+=3; break;
+            case 21:cmp_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 22:cmp_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 23:jmp   (     *(IP+1) , (   *(IP+2)) );        break;
             
             case 255:break;
         }
@@ -75,33 +74,32 @@ byte execute(char* options)
     {
         switch(*IP)
         {
-            case 1:mov_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 2:mov_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
+            case 1 :mov_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 2 :mov_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
             
-            case 3:add_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 4:add_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 5:sub_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 6:sub_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 7:mul_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 8:mul_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 9:div_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 10:div_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
-            case 11:mod_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
-            case 12:mod_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
+            case 3 :add_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 4 :add_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 5 :sub_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 6 :sub_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 7 :mul_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 8 :mul_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 9 :div_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 10:div_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 11:mod_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 12:mod_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
             
-            case 13:and_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
-            case 14:and_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
-            case 15:or_m( (DS+*(IP+1)), (DS+*(IP+2)) );  IP+=3; break;
-            case 16:or_l( (DS+*(IP+1)), (*(IP+2)) );     IP+=3; break;
-            case 17:not_m( (DS+*(IP+1)) );               IP+=2; break;
-            case 18:neg_m( (DS+*(IP+1)) );               IP+=2; break;
-            case 19:xor_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
-            case 20:xor_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
+            case 13:and_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 14:and_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 15:or_m  ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 16:or_l  ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 17:not_m ( (DS+*(IP+1)) );               IP+=3; break;
+            case 18:neg_m ( (DS+*(IP+1)) );               IP+=3; break;
+            case 19:xor_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 20:xor_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
             
-            case 21:cmp_m( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
-            case 22:cmp_l( (DS+*(IP+1)), (*(IP+2)) );    IP+=3; break;
-            case 23:jmp(*(IP+1), (*(IP+2)) );                   break;
-            case 24:def(*(IP+1), *(IP+2) );              IP+=3; break;
+            case 21:cmp_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
+            case 22:cmp_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
+            case 23:jmp   (     *(IP+1) , (   *(IP+2)) );        break;
             
             case 255:break;
         }
