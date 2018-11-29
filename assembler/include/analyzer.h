@@ -8,7 +8,8 @@
 
     struct Analyzer
     {
-        std::vector<std::string> instructions;
+        std::vector<std::string> instructions_2addr;
+        std::vector<std::string> instructions_1addr;
         std::vector<std::string> segments;
 
         std::string cs_addr_open ;

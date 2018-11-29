@@ -21,12 +21,16 @@ Analyzer::Analyzer ()
     ds_addr_open   = "[";
     ds_addr_close  = "]";
 
-    instructions  = {
-                        "mov",
-                        "add","sub","mul","div","mod",
-                        "and","or","not","xor","neg",
-                        "cmp","jmp","def"
-                    };
+    instructions_2addr  = {
+                              "mov",
+                              "add","sub","mul","div","mod",
+                              "and","or","xor",
+                              "cmp","jmp","def"
+                          };
+
+    instructions_1addr  = {
+                              "not","neg"
+                          };
 
     segments      = {
                         ".code",".data",".extra"
