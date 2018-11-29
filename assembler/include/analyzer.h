@@ -10,6 +10,8 @@
     {
         std::vector<std::string> instructions_2addr;
         std::vector<std::string> instructions_1addr;
+        std::vector<std::string> jump;
+        std::vector<std::string> jump_conditions;
         std::vector<std::string> segments;
 
         std::string cs_addr_open ;
@@ -21,6 +23,7 @@
 
         std::string delimitor = "\n";
         std::string seperator = ",";
+        std::string colon     = ":";
         
         std::vector<Token_struct> token_data;
 

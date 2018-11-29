@@ -13,6 +13,7 @@ Analyzer::Analyzer ()
 
     delimitor = "\n";
     seperator = ",";
+    colon     = ":";
 
     cs_addr_open   = "{";
     cs_addr_close  = "}";
@@ -25,15 +26,25 @@ Analyzer::Analyzer ()
                               "mov",
                               "add","sub","mul","div","mod",
                               "and","or","xor",
-                              "cmp","jmp","def"
+                              "cmp","def"
                           };
 
     instructions_1addr  = {
                               "not","neg"
                           };
 
+    jump                = {
+                              "jmp"
+                          };
+
+    jump_conditions     = {
+                                "eq","neq",
+                               "grt","grteq",
+                              "less","lesseq"
+                          };
+
     segments      = {
-                        ".code",".data",".extra"
+                        ".code",".data"
                     };
 }
 
@@ -89,9 +100,24 @@ bool Analyzer::is_possible_identifier(std::string tok)
 
 std::string Analyzer::get_type(std::vector<std::string>::iterator itr)
 {
-    if ( (std::find(keywords.begin(), keywords.end(), *itr)) != keywords.end())
+    if ( (std::find(instructions_1addr.begin(), instructions_1addr.end(), *itr)) != instructions_1addr.end())
     {
-        return "keyword";
+        return "instruction_1addr";
+    }
+
+    else if ( (std::find(instructions_2addr.begin(), instructions_2addr.end(), *itr)) != instructions_2addr.end())
+    {
+        return "instruction_2addr";
+    }
+
+    else if ( (std::find(jump.begin(), jump.end(), *itr)) != jump.end())
+    {
+        return "jump";
+    }
+
+    else if ( (std::find(jump_conditions.begin(), jump_conditions.end(), *itr)) != jump_conditions.end())
+    {
+        return "jump_condition";
     }
 
     else if ((*itr) == ".code" || (*itr) == ".data" || (*itr) == ".extra")
@@ -107,6 +133,11 @@ std::string Analyzer::get_type(std::vector<std::string>::iterator itr)
     else if ((*itr) == seperator )
     {
         return "seperator";
+    }
+
+    else if ((*itr) == colon )
+    {
+        return "colon";
     }
 
     else if ((*itr) == cs_addr_open )
