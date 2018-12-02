@@ -41,7 +41,7 @@ void main(int n,char** args)
         printf("%p  %d  %d\n",IP , *(IP), ch );
         IP=CS;
         printf("%p\nexecuting\n",IP);
-        byte status=debug("--debug-e");
+        byte status=execute("--debug-e");
         if(status==1)
             printf("File format not supported\n");
         fclose(f);
