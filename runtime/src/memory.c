@@ -27,6 +27,7 @@ void init_memory()
     ES=MEM+768;
     
     FLAGS=calloc(1,1);
+    FLAGS=255
     
     IP=CS;
     

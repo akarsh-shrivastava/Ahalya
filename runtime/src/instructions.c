@@ -41,7 +41,7 @@ void cmp_l(byte* mem1, byte literal)    {
 
 void jmp(byte flag, byte cs_add)        {
                                             byte x=(*FLAGS&flag);
-                                            if(x!=0 || flag==252 ) IP = CS+cs_add;            //252 = always true
+                                            if(x!=0) IP = CS+cs_add;
                                             else IP+=3;
                                         }
 
