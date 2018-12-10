@@ -1,5 +1,4 @@
-mov [123],1223
-add [123],34
-afad
-fe
+neg [23]
+not [2]
 
+not a

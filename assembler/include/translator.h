@@ -1,20 +1,25 @@
 #ifndef TRANSLATOR_H_INCLUDED
     #define TRANSLATOR_H_INCLUDED
+    #include <map>
     #include <vector>
     #include "analyzer.h"
     #include "structs.h"
 
     struct Translator: public Analyzer
     {
+        std::map<std::string, std::string> str2dec;
+        
         std::vector<Token_struct> token_data;
+        std::string current_line;
         std::string decimal_code;
+
         int line_count;
-        std::string msg;
+        std::string error_msg;
 
         Translator(std::vector<Token_struct> data);
         void build_decimal_instr();
-        void syntax_error(std::vector<Token_struct>::iterator itr);
+        void syntax_error(std::vector<Token_struct>::iterator itr, std::string err_msg);
 
-    }
+    };
 
 #endif

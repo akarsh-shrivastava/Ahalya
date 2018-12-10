@@ -9,10 +9,11 @@ SRC       =     src
 
 HEADERS   =     $(INCLUDES)/*.h
 SOURCE    =     $(SRC)/*.cpp
-OBJECT    =     $(OBJ)/tokenizer.o \
-                $(OBJ)/analyzer.o \
+OBJECT    =     $(OBJ)/structs.o \
                 $(OBJ)/preprocessor.o \
-                $(OBJ)/structs.o \
+                $(OBJ)/tokenizer.o \
+                $(OBJ)/analyzer.o \
+                $(OBJ)/translator.o \
                 $(OBJ)/main.o
 
 CXFLAGS   =     -c -I$(INCLUDES) -fPIC

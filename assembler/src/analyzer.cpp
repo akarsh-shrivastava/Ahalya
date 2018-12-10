@@ -38,9 +38,10 @@ Analyzer::Analyzer ()
                           };
 
     jump_conditions     = {
-                                "eq","neq",
-                               "grt","grteq",
-                              "less","lesseq"
+                                "eq"  ,  "neq",
+                               "grt"  ,  "grteq",
+                              "less"  ,  "lesseq",
+                              "always"
                           };
 
     segments      = {

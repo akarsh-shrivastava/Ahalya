@@ -7,6 +7,7 @@
 #include "preprocessor.h"
 #include "tokenizer.h"
 #include "analyzer.h"
+#include "translator.h"
 
 int main(int n,char** args)
 {
@@ -36,5 +37,11 @@ int main(int n,char** args)
         Analyzer a;
         a.build_token_data(tokens);
         a.print_token_data();
+
+        Translator tr(a.token_data);
+        tr.build_decimal_instr();
+        std::cout<<tr.error_msg<<"\n\n";
+        std::cout<<tr.decimal_code;
+
     }
 }
