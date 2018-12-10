@@ -44,7 +44,7 @@ Translator::Translator(std::vector<Token_struct> data) : Analyzer()
     current_line = "";
     decimal_code = "";
     line_count   = 1;
-    inst_count   = 0;
+    inst_count   = 2;
     error_msg    = "";
 }
 
@@ -121,7 +121,98 @@ void Translator::build_decimal_instr()
                 syntax_error(itr, "expected an address");
             }
         }
-        else if (itr->type == "instruction_2addr");
+        else if (itr->type == "instruction_2addr")
+        {
+            std::string buff(itr->tok);
+            itr++;
+            if (itr->type == "ds_addr_open")
+            {
+                itr++;
+                if (itr->type == "constant")
+                {
+                    current_line += (itr->tok+"\n");
+                    itr++;
+                    if(itr->type == "ds_addr_close")
+                    {
+                        itr++;
+                        if (itr->type == "seperator")
+                        {
+                            itr++;
+                            if(itr->type == "ds_addr_open")
+                            {
+                                itr++;
+                                if (itr->type == "constant")
+                                {
+                                    current_line += (itr->tok + "\n");
+                                    itr++;
+                                    if (itr->type == "ds_addr_close")
+                                    {
+                                        itr++;
+                                        if (itr->type == "delimitor")
+                                        {
+                                            current_line = (str2dec[buff+"_m"] + "\n" + current_line);
+                                            decimal_code += current_line;
+                                            current_line.clear();
+                                            line_count++;
+                                            inst_count += 3;
+                                        }
+                                        else
+                                        {
+                                            syntax_error(itr, "expected end of line");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        syntax_error(itr, "address marker ([) not closed");
+                                    }
+                                }
+                                else
+                                {
+                                    syntax_error(itr, "not a valid address");
+                                }
+                            }
+                            else if (itr->type == "constant")
+                            {
+                                current_line += (itr->tok + "\n");
+                                itr++;
+                                if (itr->type == "delimitor")
+                                {
+                                    current_line = (str2dec[buff+"_l"] + "\n" + current_line);
+                                    decimal_code += current_line;
+                                    current_line.clear();
+                                    line_count++;
+                                    inst_count += 3;
+                                }
+                                else
+                                {
+                                    syntax_error(itr, "expected end of line after second argument");
+                                }
+                            }
+                            else
+                            {
+                                syntax_error(itr, "expected an address or a constant as the second argument");
+                            }
+                        }
+                        else
+                        {
+                            syntax_error(itr, "expected comma after first address");
+                        }
+                    }
+                    else
+                    {
+                        syntax_error(itr, "address marker ([) not closed");
+                    }
+                }
+                else
+                {
+                    syntax_error(itr, "not a valid address");
+                }
+            }
+            else
+            {
+                syntax_error(itr, "expected an address as the first address");
+            }
+        }
         else if (itr->type == "jump")
         {
             current_line += (str2dec[itr->tok]+"\n");

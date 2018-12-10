@@ -14,6 +14,7 @@ OBJECT    =     $(OBJ)/structs.o \
                 $(OBJ)/tokenizer.o \
                 $(OBJ)/analyzer.o \
                 $(OBJ)/translator.o \
+                $(OBJ)/dectobin.o \
                 $(OBJ)/main.o
 
 CXFLAGS   =     -c -I$(INCLUDES) -fPIC

@@ -1,7 +1,0 @@
-neg [23]
-not [2]
-
-do_something :
-neg [34]
-
-jmp always do_something
