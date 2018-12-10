@@ -38,11 +38,27 @@ Translator::Translator(std::vector<Token_struct> data) : Analyzer()
                     {"always", "7"}
 
                 };
+
+    labels = {};
     token_data   = data;
     current_line = "";
     decimal_code = "";
     line_count   = 1;
-    error_msg          = "";
+    inst_count   = 0;
+    error_msg    = "";
+}
+
+bool Translator::is_lable(std::string identifier)
+{
+    std::map<std::string, std::string>::iterator map_itr;
+
+    for(map_itr=labels.begin(); map_itr!=labels.end(); map_itr++)
+    {
+        if (identifier == map_itr->first)
+            return true;
+    }
+
+    return false;
 }
 
 void Translator::syntax_error(std::vector<Token_struct>::iterator itr, std::string err_msg)
@@ -50,6 +66,7 @@ void Translator::syntax_error(std::vector<Token_struct>::iterator itr, std::stri
     error_msg += "Error at line "+std::to_string(line_count)+": "+err_msg+"\n";
     while(itr->tok != "\n") itr++;
     line_count++;
+    current_line.clear();
 }
 
 void Translator::build_decimal_instr()
@@ -62,7 +79,7 @@ void Translator::build_decimal_instr()
         {
             line_count++;
         }
-        if (itr->type == "instruction_1addr")
+        else if (itr->type == "instruction_1addr")
         {
             current_line += (str2dec[itr->tok+"_m"] + "\n");
             itr++;
@@ -82,6 +99,7 @@ void Translator::build_decimal_instr()
                             decimal_code += current_line;
                             current_line.clear();
                             line_count++;
+                            inst_count += 3;
                         }
                         else
                         {
@@ -104,8 +122,78 @@ void Translator::build_decimal_instr()
             }
         }
         else if (itr->type == "instruction_2addr");
-        else if (itr->type == "jump");
-        else if (itr->type == "possible_identifier");
-        else;
+        else if (itr->type == "jump")
+        {
+            current_line += (str2dec[itr->tok]+"\n");
+            itr++;
+            if(itr->type == "jump_condition")
+            {
+                current_line += (str2dec[itr->tok]+"\n");
+                itr++;
+                if(itr->type == "possible_identifier")
+                {
+                    if(is_lable(itr->tok))
+                    {
+                        current_line += (labels[itr->tok]+"\n");
+                        itr++;
+                        if(itr->type == "delimitor")
+                        {
+                            decimal_code+=current_line;
+                            current_line.clear();
+                            line_count++;
+                            inst_count+=3;
+                        }
+                        else
+                        {
+                            syntax_error(itr, "expected end of line");
+                        }
+                    }
+                    else
+                    {
+                        syntax_error(itr, "undefined label");
+                    }
+                }
+                else
+                {
+                    syntax_error(itr, "expected label");
+                }
+            }
+            else
+            {
+                syntax_error(itr, "expected condition after jump");
+            }
+        }
+        else if (itr->type == "possible_identifier")
+        {
+            if(is_lable(itr->tok))
+            {
+                syntax_error(itr, "label name already used");
+            }
+            else
+            {
+                labels[itr->tok] = std::to_string(inst_count);
+                itr++;
+                if(itr->type == "colon")
+                {
+                    itr++;
+                    if(itr->type == "delimitor")
+                    {
+                        line_count++;
+                    }
+                    else
+                    {
+                        syntax_error(itr, "expected end of line");
+                    }
+                }
+                else
+                {
+                    syntax_error(itr, "expected a colon");
+                }
+            }
+        }
+        else
+        {
+            syntax_error(itr,"expected an instruction or a label");
+        }
     }
 }

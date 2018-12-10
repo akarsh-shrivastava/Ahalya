@@ -1,4 +1,7 @@
 neg [23]
 not [2]
 
-not a
+do_something :
+neg [34]
+
+jmp always do_something

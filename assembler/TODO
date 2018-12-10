@@ -1,4 +1,1 @@
-completed analyzer
-
-start translator
-    void build_decimal_instructions(std::string filename);
+complete translator

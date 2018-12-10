@@ -8,17 +8,21 @@
     struct Translator: public Analyzer
     {
         std::map<std::string, std::string> str2dec;
+
+        std::map<std::string, std::string> labels;
         
         std::vector<Token_struct> token_data;
         std::string current_line;
         std::string decimal_code;
 
         int line_count;
+        int inst_count;
         std::string error_msg;
 
         Translator(std::vector<Token_struct> data);
         void build_decimal_instr();
         void syntax_error(std::vector<Token_struct>::iterator itr, std::string err_msg);
+        bool is_lable(std::string identifier);
 
     };
 
