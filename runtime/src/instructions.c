@@ -45,6 +45,3 @@ void jmp(byte flag, byte cs_add)        {
                                             else IP+=3;
                                         }
 
-void def(byte es_add,byte cs_add)       {
-                                            *(ES+es_add)=cs_add;
-                                        }

@@ -29,5 +29,4 @@
     void cmp_l(byte* reg1, byte literal);           //22,0x16
 
     void jmp(byte flag, byte cs_add);               //23,0x17
-    void def(byte es_add,byte cs_add);              //24,0x18
 #endif
