@@ -11,3 +11,5 @@ void Token_struct::print()
 {
     std::cout<<"{\n    "<<tok<<"\n    "<<type<<"\n}\n\n\n";
 }
+
+std::map<std::string, std::string> Keywords::labels={};

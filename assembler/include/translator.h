@@ -5,11 +5,9 @@
     #include "analyzer.h"
     #include "structs.h"
 
-    struct Translator: public Analyzer
+    struct Translator
     {
         std::map<std::string, std::string> str2dec;
-
-        std::map<std::string, std::string> labels;
         
         std::vector<Token_struct> token_data;
         std::string current_line;

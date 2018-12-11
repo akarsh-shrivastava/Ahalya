@@ -8,49 +8,6 @@
 #include "structs.h"
 #include "analyzer.h"
 
-Analyzer::Analyzer ()
-{
-
-    delimitor = "\n";
-    seperator = ",";
-    colon     = ":";
-
-    cs_addr_open   = "{";
-    cs_addr_close  = "}";
-    es_addr_open   = "(";
-    es_addr_close  = ")";
-    ds_addr_open   = "[";
-    ds_addr_close  = "]";
-
-    instructions_2addr  = {
-                              "mov",
-                              "add","sub","mul","div","mod",
-                              "and","or","xor",
-                              "cmp","def"
-                          };
-
-    instructions_1addr  = {
-                              "not","neg",
-                              "read","write"
-                          };
-
-    jump                = {
-                              "jmp"
-                          };
-
-    jump_conditions     = {
-                                "eq"  ,  "neq",
-                               "grt"  ,  "grteq",
-                              "less"  ,  "lesseq",
-                              "always"
-                          };
-
-    segments      = {
-                        ".code",".data"
-                    };
-}
-
-
 
 
 void Analyzer::build_token_data(std::vector<std::string> tokens)
@@ -102,22 +59,22 @@ bool Analyzer::is_possible_identifier(std::string tok)
 
 std::string Analyzer::get_type(std::vector<std::string>::iterator itr)
 {
-    if ( (std::find(instructions_1addr.begin(), instructions_1addr.end(), *itr)) != instructions_1addr.end())
+    if ( (std::find(Keywords::instructions_1addr.begin(), Keywords::instructions_1addr.end(), *itr)) != Keywords::instructions_1addr.end())
     {
         return "instruction_1addr";
     }
 
-    else if ( (std::find(instructions_2addr.begin(), instructions_2addr.end(), *itr)) != instructions_2addr.end())
+    else if ( (std::find(Keywords::instructions_2addr.begin(), Keywords::instructions_2addr.end(), *itr)) != Keywords::instructions_2addr.end())
     {
         return "instruction_2addr";
     }
 
-    else if ( (std::find(jump.begin(), jump.end(), *itr)) != jump.end())
+    else if ( (std::find(Keywords::jump.begin(), Keywords::jump.end(), *itr)) != Keywords::jump.end())
     {
         return "jump";
     }
 
-    else if ( (std::find(jump_conditions.begin(), jump_conditions.end(), *itr)) != jump_conditions.end())
+    else if ( (std::find(Keywords::jump_conditions.begin(), Keywords::jump_conditions.end(), *itr)) != Keywords::jump_conditions.end())
     {
         return "jump_condition";
     }
@@ -127,47 +84,47 @@ std::string Analyzer::get_type(std::vector<std::string>::iterator itr)
         return *itr;
     }
 
-    else if ((*itr) == delimitor )
+    else if ((*itr) == Keywords::delimitor )
     {
         return "delimitor";
     }
 
-    else if ((*itr) == seperator )
+    else if ((*itr) == Keywords::seperator )
     {
         return "seperator";
     }
 
-    else if ((*itr) == colon )
+    else if ((*itr) == Keywords::colon )
     {
         return "colon";
     }
 
-    else if ((*itr) == cs_addr_open )
+    else if ((*itr) == Keywords::cs_addr_open )
     {
         return "cs_addr_open";
     }
 
-    else if ((*itr) == cs_addr_close )
+    else if ((*itr) == Keywords::cs_addr_close )
     {
         return "cs_addr_close";
     }
 
-    else if ((*itr) == es_addr_open )
+    else if ((*itr) == Keywords::es_addr_open )
     {
         return "es_addr_open";
     }
 
-    else if ((*itr) == es_addr_close )
+    else if ((*itr) == Keywords::es_addr_close )
     {
         return "es_addr_close";
     }
 
-    else if ((*itr) == ds_addr_open )
+    else if ((*itr) == Keywords::ds_addr_open )
     {
         return "ds_addr_open";
     }
 
-    else if ((*itr) == ds_addr_close )
+    else if ((*itr) == Keywords::ds_addr_close )
     {
         return "ds_addr_close";
     }

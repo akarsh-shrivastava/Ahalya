@@ -6,7 +6,7 @@
 #include "translator.h"
 #include "structs.h"
 
-Translator::Translator(std::vector<Token_struct> data) : Analyzer()
+Translator::Translator(std::vector<Token_struct> data)
 {
     str2dec =   {
                     {"mov_m",  "1"},  {"mov_l",  "2"},
@@ -40,7 +40,7 @@ Translator::Translator(std::vector<Token_struct> data) : Analyzer()
 
                 };
 
-    labels = {};
+
     token_data   = data;
     current_line = "";
     decimal_code = "";
@@ -53,7 +53,7 @@ bool Translator::is_lable(std::string identifier)
 {
     std::map<std::string, std::string>::iterator map_itr;
 
-    for(map_itr=labels.begin(); map_itr!=labels.end(); map_itr++)
+    for(map_itr=Keywords::labels.begin(); map_itr!=Keywords::labels.end(); map_itr++)
     {
         if (identifier == map_itr->first)
             return true;
@@ -226,7 +226,7 @@ void Translator::build_decimal_instr()
                 {
                     if(is_lable(itr->tok))
                     {
-                        current_line += (labels[itr->tok]+"\n");
+                        current_line += (Keywords::labels[itr->tok]+"\n");
                         itr++;
                         if(itr->type == "delimitor")
                         {
@@ -263,7 +263,7 @@ void Translator::build_decimal_instr()
             }
             else
             {
-                labels[itr->tok] = std::to_string(inst_count);
+                Keywords::labels[itr->tok] = std::to_string(inst_count);
                 itr++;
                 if(itr->type == "colon")
                 {
