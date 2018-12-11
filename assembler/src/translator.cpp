@@ -26,7 +26,8 @@ Translator::Translator(std::vector<Token_struct> data) : Analyzer()
                     {"cmp_m", "21"},  {"cmp_l", "22"},
 
                     {"jmp",   "23"},
-                    {"def",   "24"},
+
+                    {"read_m",  "24"},  {"write_m", "25"},
 
 
                     {"less"  , "1"},

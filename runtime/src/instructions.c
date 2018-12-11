@@ -1,6 +1,8 @@
+#include <stdio.h>
 #include "instructions.h"
 #include "memory.h"
 #include "byte.h"
+#include "funct.h"
 
 void mov_m(byte* mem1, byte* mem2)      {*mem1=*mem2;}
 void mov_l(byte* mem1, byte literal)    {*mem1=literal;}
@@ -45,3 +47,5 @@ void jmp(byte flag, byte cs_add)        {
                                             else IP+=3;
                                         }
 
+void read (byte* mem1)                  {*mem1=(byte)getch(); printf("%c",*mem1);}
+void write(byte* mem1)                  {printf("%c",*mem1);}

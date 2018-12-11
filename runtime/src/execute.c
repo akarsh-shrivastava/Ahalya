@@ -49,6 +49,9 @@ byte execute(char* options)
             case 21:cmp_m ( (DS+*(IP+1)), (DS+*(IP+2)) ); IP+=3; break;
             case 22:cmp_l ( (DS+*(IP+1)), (   *(IP+2)) ); IP+=3; break;
             case 23:jmp   (     *(IP+1) , (   *(IP+2)) );        break;
+
+            case 24:read  ( (DS+*(IP+1)) );               IP+=3; break;
+            case 25:write ( (DS+*(IP+1)) );               IP+=3; break;
             
             case 255:break;
         }

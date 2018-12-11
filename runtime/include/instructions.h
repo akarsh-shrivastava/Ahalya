@@ -29,4 +29,7 @@
     void cmp_l(byte* reg1, byte literal);           //22,0x16
 
     void jmp(byte flag, byte cs_add);               //23,0x17
+
+    void read(byte* mem1);                          //24,0x18
+    void write(byte* mem1);                         //25,0x19
 #endif

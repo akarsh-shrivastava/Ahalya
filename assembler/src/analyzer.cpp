@@ -30,7 +30,8 @@ Analyzer::Analyzer ()
                           };
 
     instructions_1addr  = {
-                              "not","neg"
+                              "not","neg",
+                              "read","write"
                           };
 
     jump                = {
