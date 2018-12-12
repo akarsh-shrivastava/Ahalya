@@ -16,7 +16,7 @@ void Dectobin::create_bin()
 {
     std::size_t dot_pos = filename.find(".");
 
-    if (filename.substr(dot_pos) != ".ahd")
+    if (filename.substr(dot_pos) != ".del")
     {
         std::cout<<"invalid file type\n";
         exit(0);

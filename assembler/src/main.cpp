@@ -15,7 +15,7 @@ int main(int n,char** args)
     std::string filename(args[1]);
     std::size_t dot_pos = filename.find(".");
 
-    if (filename.substr(dot_pos) != ".ahm")
+    if (filename.substr(dot_pos) != ".lsm")
     {
         std::cout<<"invalid file type\n";
         exit(0);
@@ -55,7 +55,7 @@ int main(int n,char** args)
     tr.build_decimal_instr();
     if (tr.error_msg.size() == 0)
     {
-        std::ofstream fout((filename+".ahd").c_str());
+        std::ofstream fout((filename+".del").c_str());
         fout<<tr.decimal_code;
         fout.close();        
     }
@@ -65,7 +65,7 @@ int main(int n,char** args)
         exit(0);
     }
 
-    Dectobin d(filename+".ahd");
+    Dectobin d(filename+".del");
     d.create_bin();
 
     return 0;

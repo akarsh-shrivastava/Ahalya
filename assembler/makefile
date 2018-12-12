@@ -1,4 +1,4 @@
-TARGET = ahalasm
+TARGET = lasm
 
 CX        =     g++
 LD        =     g++
