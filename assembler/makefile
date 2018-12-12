@@ -27,7 +27,11 @@ DIREXISTS =     test -d
 
 HOMEBIN   =     ~/bin
 
-
+GIT       =     git
+PULL      =     pull
+REMOTE    =     origin
+BRANCH    =     master
+MAKE      =     make
 
 $(TARGET): $(OBJECT)
 	$(LD) $^ -o $@
@@ -41,3 +45,7 @@ install: $(TARGET)
 
 uninstall:
 	$(RM) $(RMFLAGS) $(HOMEBIN)/$(TARGET)
+
+update:
+	$(GIT) $(PULL) $(REMOTE) $(BRANCH)
+	$(MAKE) install 
