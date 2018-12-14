@@ -7,6 +7,7 @@
     extern byte* ES;
     
     extern byte* IP;
+    extern byte* SP;
     extern byte* FLAGS;         /*{
                                         bit 0                                                       ; left most
                                         bit 1

@@ -12,6 +12,7 @@ byte* ES=NULL;
 byte* FLAGS=NULL;
 
 byte* IP=NULL;
+byte* SP=NULL;
 
 byte* PORT1=NULL;
 byte* PORT2=NULL;
@@ -30,6 +31,7 @@ void init_memory()
     *FLAGS=255;
     
     IP=CS;
+    SP=SS-1;
     
     PORT1=calloc(1,1);
     PORT2=calloc(1,1);

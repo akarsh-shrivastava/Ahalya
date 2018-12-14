@@ -27,7 +27,8 @@ Translator::Translator(std::vector<Token_struct> data)
 
                     {"jmp",   "23"},
 
-                    {"read_m",  "24"},  {"write_m", "25"},
+                    {"read_m", "24"},  {"write_m", "25"},
+                    {"push_m", "26"},  {"pop_m", "27"},
 
 
                     {"less"  , "1"},

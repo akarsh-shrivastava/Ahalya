@@ -52,6 +52,9 @@ byte execute(char* options)
 
             case 24:read  ( (DS+*(IP+1)) );               IP+=3; break;
             case 25:write ( (DS+*(IP+1)) );               IP+=3; break;
+
+            case 26:push  ( (DS+*(IP+1)) );               IP+=3; break;
+            case 27:pop   ( (DS+*(IP+1)) );               IP+=3; break;
             
             case 255:break;
         }

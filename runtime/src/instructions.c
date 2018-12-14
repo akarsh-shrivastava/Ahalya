@@ -49,3 +49,17 @@ void jmp(byte flag, byte cs_add)        {
 
 void read (byte* mem1)                  {*mem1=(byte)getch(); printf("%c",*mem1);}
 void write(byte* mem1)                  {printf("%c",*mem1);}
+
+void push(byte* mem1)                   {
+                                            if ( SP==(SS+255) )
+                                                printf("Stack Overflow\n");
+                                            else
+                                                *(++SP) = *mem1;
+                                        }
+
+void pop (byte* mem1)                   {
+                                            if ( SP==(SS-1) )
+                                                printf("Stack Underflow\n");
+                                            else
+                                                *mem1 = *(SP--);
+                                        }

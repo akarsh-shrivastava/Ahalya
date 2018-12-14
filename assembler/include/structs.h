@@ -43,7 +43,8 @@
 
         inline static std::vector<std::string> instructions_1addr  =  {
                                                                           "not","neg",
-                                                                          "read","write"
+                                                                          "read","write",
+                                                                          "push","pop"
                                                                       };
 
         inline static std::vector<std::string> jump                =  {

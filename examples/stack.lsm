@@ -1,0 +1,8 @@
+
+mov [1], 34
+mov [2], 45
+push [1]
+push [2]
+pop [1]
+pop [2]
+pop [1]

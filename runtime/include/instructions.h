@@ -32,4 +32,7 @@
 
     void read(byte* mem1);                          //24,0x18
     void write(byte* mem1);                         //25,0x19
+
+    void push(byte* mem1);                          //26,0x1a
+    void pop (byte* mem1);                          //27,0x1b
 #endif
