@@ -55,13 +55,13 @@ syntax:
  <br>
 
 ### Running
-Save the assembly code with .lsm extention
-To assemble
+Save the assembly code with .lsm extention <br>
+To assemble:
 ```bash
 lasm filename.lsm
 ```
 filename.ahl will be created <br>
-To run
+To run:
 ```bash
 ahalya filename.ahl
 ```
