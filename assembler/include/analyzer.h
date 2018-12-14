@@ -15,8 +15,7 @@
         bool is_string(std::string tok);
         bool is_const(std::string tok);
         std::string get_type(std::vector<std::string>::iterator itr);
-        std::vector<Token_struct> get_token_data();
-
+        
         void print_token_data();
     };
 #endif

@@ -79,7 +79,7 @@ std::string Analyzer::get_type(std::vector<std::string>::iterator itr)
         return "jump_condition";
     }
 
-    else if ((*itr) == ".code" || (*itr) == ".data" || (*itr) == ".extra")
+    else if ((*itr) == ".code" || (*itr) == ".data" || (*itr) == ".extra" || (*itr) == ".end")
     {
         return *itr;
     }
@@ -157,9 +157,4 @@ void Analyzer::print_token_data()
     {
         (*i).print();
     }
-}
-
-std::vector<Token_struct> Analyzer::get_token_data()
-{
-    return token_data;
 }

@@ -31,14 +31,15 @@ void main(int n,char** args)
     {
         byte ch;
         init_memory();
-
-        printf("%p\n", CS);
-        printf("%p\n", DS);
-        printf("%p\n", IP);
-        printf("DS:%d\tDS+1:%d\tDS+2:%d\tDS+3:%d\n", *DS, *(DS+1), *(DS+2), *(DS+3) );
-        printf("%x\n", *FLAGS);
-        printf("copying\n");
-
+        if (!strcmp(options[0],"--debug-e") || !strcmp(options[0],"--debug") )
+        {
+            printf("%p\n", CS);
+            printf("%p\n", DS);
+            printf("%p\n", IP);
+            printf("DS:%d\tDS+1:%d\tDS+2:%d\tDS+3:%d\n", *DS, *(DS+1), *(DS+2), *(DS+3) );
+            printf("%x\n", *FLAGS);
+            printf("copying\n");
+        }
         while(1)
         {
             ch=(byte)fgetc(f);
@@ -51,12 +52,15 @@ void main(int n,char** args)
                 printf("Code too big. Exiting\n");
                 exit(0);
             }
-            printf("%p  %d  %d\n",IP , *(IP-1), ch );
+            if (!strcmp(options[0],"--debug-e") || !strcmp(options[0],"--debug") )
+                printf("%p  %d  %d\n",IP , *(IP-1), ch );
         }
         *IP=255;
-        printf("%p  %d  %d\n",IP , *(IP), ch );
+        if (!strcmp(options[0],"--debug-e") || !strcmp(options[0],"--debug") )
+            printf("%p  %d  %d\n",IP , *(IP), ch );
         IP=CS;
-        printf("%p\nexecuting\n",IP);
+        if (!strcmp(options[0],"--debug-e") || !strcmp(options[0],"--debug") )
+            printf("%p\nexecuting\n",IP);
         byte status=execute(options[0]);
         printf("%s","\n");
         if(status==1)

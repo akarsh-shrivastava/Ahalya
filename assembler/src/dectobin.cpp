@@ -62,4 +62,8 @@ void Dectobin::create_bin()
     ch=EOF;
     fout.write((char*)&ch,1);
     fout.close();
+
+    std::string remove_command("rm ");
+    remove_command += (filename +".del");
+    system(remove_command.c_str());
 }
