@@ -61,8 +61,13 @@ byte execute(char* options)
 
         if (!strcmp(options,"--debug-e") || !strcmp(options,"--debug") )
         {
-            printf("DS:%d\tDS+1:%d\tDS+2:%d\tDS+3:%d\n", *DS, *(DS+1), *(DS+2), *(DS+3) );
-            printf("ES:%d\tES+1:%d\tES+2:%d\tES+3:%d\n", *ES, *(ES+1), *(ES+2), *(ES+3) );
+            for (int i=0;i<36;i++)
+            {
+                printf("  DS+%2d:%3d  ", i,*(DS+i) );
+                if (i%6==5)
+                    printf("\n");
+            }
+
             printf("%x\n\n", *FLAGS);
         }
         if (!strcmp(options,"--debug-e"))
