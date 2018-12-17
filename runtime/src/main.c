@@ -26,7 +26,7 @@ void main(int n,char** args)
     }
 
     FILE *f;
-    f = fopen(args[1],"r");
+    f = fopen(filename[0],"r");
     if(f)
     {
         byte ch;
