@@ -12,7 +12,7 @@ Dectobin::Dectobin(std::string file_name)
     filename = file_name;
 }
 
-void Dectobin::create_bin()
+void Dectobin::create_bin(bool keep = true)
 {
     std::size_t dot_pos = filename.find(".");
 
@@ -63,7 +63,10 @@ void Dectobin::create_bin()
     fout.write((char*)&ch,1);
     fout.close();
 
-    std::string remove_command("rm ");
-    remove_command += (filename +".del");
-    system(remove_command.c_str());
+    if(!keep)
+    {
+        std::string remove_command("rm ");
+        remove_command += (filename +".del");
+        system(remove_command.c_str());
+    }
 }

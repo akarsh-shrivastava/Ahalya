@@ -1,9 +1,9 @@
-# Ahalya
+# avm
 
 ### Installing
 ```bash
-git clone https://github.com/akarsh-shrivastava/Ahalya.git
-cd Ahalya/assembler
+git clone https://github.com/akarsh-shrivastava/avm.git
+cd avm/assembler
 make install
 cd ../runtime
 make install
@@ -63,6 +63,6 @@ lasm filename.lsm
 filename.ahl will be created <br>
 To run:
 ```bash
-ahalya filename.ahl
+avm filename.ahl
 ```
-To see status of memory after each instruction run with --debug-e option
+To see status of memory after each instruction run with --de option

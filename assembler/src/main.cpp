@@ -66,7 +66,7 @@ int main(int n,char** args)
     }
 
     Dectobin d(filename+".del");
-    d.create_bin();
+    d.create_bin(false);
 
     return 0;
 }

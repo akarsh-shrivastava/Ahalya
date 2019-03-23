@@ -31,7 +31,7 @@ void main(int n,char** args)
     {
         byte ch;
         init_memory();
-        if (!strcmp(options[0],"--debug-e") || !strcmp(options[0],"--debug") )
+        if (!strcmp(options[0],"--de") || !strcmp(options[0],"--d") )
         {
             printf("%p\n", CS);
             printf("%p\n", DS);
@@ -52,14 +52,14 @@ void main(int n,char** args)
                 printf("Code too big. Exiting\n");
                 exit(0);
             }
-            if (!strcmp(options[0],"--debug-e") || !strcmp(options[0],"--debug") )
+            if (!strcmp(options[0],"--de") || !strcmp(options[0],"--d") )
                 printf("%p  %d  %d\n",IP , *(IP-1), ch );
         }
         *IP=255;
-        if (!strcmp(options[0],"--debug-e") || !strcmp(options[0],"--debug") )
+        if (!strcmp(options[0],"--de") || !strcmp(options[0],"--d") )
             printf("%p  %d  %d\n",IP , *(IP), ch );
         IP=CS;
-        if (!strcmp(options[0],"--debug-e") || !strcmp(options[0],"--debug") )
+        if (!strcmp(options[0],"--de") || !strcmp(options[0],"--d") )
             printf("%p\nexecuting\n",IP);
         byte status=execute(options[0]);
         printf("%s","\n");

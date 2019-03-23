@@ -18,7 +18,7 @@ byte execute(char* options)
         return 1;
     while(*IP!=255)
     {
-        if (!strcmp(options,"--debug-e") || !strcmp(options,"--debug") )
+        if (!strcmp(options,"--de") || !strcmp(options,"--d") )
             printf("IP-%p:%d\n",IP,*IP);
         
         switch(*IP)
@@ -59,7 +59,7 @@ byte execute(char* options)
             case 255:break;
         }
 
-        if (!strcmp(options,"--debug-e") || !strcmp(options,"--debug") )
+        if (!strcmp(options,"--de") || !strcmp(options,"--d") )
         {
             for (int i=0;i<36;i++)
             {
@@ -70,7 +70,7 @@ byte execute(char* options)
 
             printf("%x\n\n", *FLAGS);
         }
-        if (!strcmp(options,"--debug-e"))
+        if (!strcmp(options,"--de"))
             getch();
     }
 

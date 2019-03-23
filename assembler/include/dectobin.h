@@ -7,6 +7,6 @@
 		std::string filename;
 
 		Dectobin (std::string file_name);
-		void create_bin();		
+		void create_bin(bool keep);		
 	};
 #endif

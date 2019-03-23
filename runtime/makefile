@@ -1,4 +1,4 @@
-TARGET = ahalya
+TARGET = avm
 
 CC        =     gcc
 LD        =     gcc
