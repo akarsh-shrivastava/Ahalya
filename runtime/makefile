@@ -15,7 +15,7 @@ OBJECT    =     $(OBJ)/execute.o \
                 $(OBJ)/memory.o \
                 $(OBJ)/funct.o
 
-CFLAGS    =     -c -I$(INCLUDES) -fPIC
+CFLAGS    =     -c -I$(INCLUDES) -fPIC -O3
 
 CP        =     cp
 RM        =     rm

@@ -17,7 +17,7 @@ OBJECT    =     $(OBJ)/structs.o \
                 $(OBJ)/dectobin.o \
                 $(OBJ)/main.o
 
-CXFLAGS   =     -c -I$(INCLUDES) -fPIC -std=c++17
+CXFLAGS   =     -c -I$(INCLUDES) -fPIC -std=c++17 -O3
 
 CP        =     cp
 RM        =     rm
