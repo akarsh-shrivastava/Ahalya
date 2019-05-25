@@ -1,11 +1,11 @@
 #ifndef MEMORY_H_DEFINED
     #define MEMORY_H_DEFINED
     #include "byte.h"
+
     extern byte* CS;
     extern byte* DS;
     extern byte* SS;
-    extern byte* ES;
-    
+
     extern byte* IP;
     extern byte* SP;
     extern byte* FLAGS;         /*{
@@ -16,8 +16,5 @@
                                         bit 4
                                         bit 5, 6 & 7 - cmp flag: 100- reg1>, 010- equal, 001- reg2> ; 7- right most
                                   }*/
-    extern byte* PORT1;
-    extern byte* PORT2;
-    extern byte* PORT3;
     void init_memory();
 #endif
